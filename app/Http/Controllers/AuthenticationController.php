@@ -9,7 +9,6 @@ class AuthenticationController extends Controller
 {
     public function login(Request $request)
     {
-        dd($request);
         $credential =  $request->validate([
             'email' => 'required | email',
             'password' => 'required'
@@ -19,7 +18,7 @@ class AuthenticationController extends Controller
 
         if (Auth::attempt($credential)) {
 
-            return redirect()->route('dasboard');
+            return ['status' => 'berhasil', 'redirect' => route('dasboard')];
         }
 
         return "gagal";

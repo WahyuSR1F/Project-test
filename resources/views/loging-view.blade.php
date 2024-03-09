@@ -54,10 +54,11 @@
             console.log(email, password);
 
             //melakukan post mengunkana axios
-            await axios.post('{{ route('login') }}', {
+            let login = await axios.post('{{ route('login') }}', {
                 email: email,
                 password: password
             });
+            window.location.replace(login.data.redirect);
         });
     </script>
 
